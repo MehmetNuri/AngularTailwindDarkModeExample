@@ -14,6 +14,11 @@ export class AppComponent {
   public theme$ = this._themeService.theme$;
 
   constructor() {
+    this.isChecked = false;
+    this.changeStatus();
+  }
+
+  private changeStatus() {
     this._themeService.theme$.subscribe((theme) => {
       this.themeName = theme;
     });
@@ -27,5 +32,8 @@ export class AppComponent {
 
   public toggleTheme(): void {
     this._themeService.toggleDarkMode();
+    this.changeStatus();
+
+
   }
 }
